@@ -1,15 +1,23 @@
-# This is a python file! The '#' character indicates that the following line is a comment.
+from __future__ import division
+import numpy as np
 
-# The following is an example for how to define a function in Python
-# def tells the compiler that hello_world is the name of a function
-# this implementation of hello_world takes a string as an argument,
-# which has default value of the empty string. If the user calls 
-# hello_world() without an argument, then the compiler uses ''
-# as the default value of the argument.
-def hello_world(name=''):
-    print "hello world!"
-    print name
-    return
-    
+# user defines function, staring and end points, and chunk number
+begin = float(raw_input("Staring Val:  "))
+end = float( raw_input("Final Val:  "))
+chunk = int(raw_input("Chunk Number:  "))
+
+def riemannsum(func, a, b, N):
+    i = 1
+    sum = 0
+    width = (b-a)/N
+    for i in range(0 , N):
+       sum = sum + func(a+i*width)*width
+       i = i +1
+    print  sum
+
+def quadratic(x):
+    return x**2 + 2
+
+riemannsum(quadratic,begin,end,chunk)
     
 #Implement the Riemann Sum approximation for integrals.
